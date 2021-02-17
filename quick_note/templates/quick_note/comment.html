@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>Add your comment</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href=" {% static 'quick_note/css/modalStyle.css' %}"/>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+		
+			#notebox{
+				background: #00cc66;
+				color: #fff;
+				width: 60vw;
+				height: 90vh;
+				margin: 5vh auto;
+				border: 2px solid #4acf50;
+				border-radius: 8px;
+				padding-top: 10px;
+				overflow: hidden;
+			}
+			
+			#controllers{
+				width: 98%;
+				margin: 0 auto;
+			}
+
+			button{
+				cursor: pointer;
+				border:none;
+				background: #ccc;
+			}
+			
+			button:hover{
+				background: #e8e8e8;
+			}
+			
+			button:nth-of-type(19){
+				margin-top: 20px;
+				
+			}
+			
+			iframe{
+				width: 90%;
+				height: 80%;
+				border: 2px solid #4acf50;
+				border-radius: 8px;
+				margin: 20px 30px;
+				overflow-y: scroll;
+				overflow-x: none;
+				background:#fff;
+			}
+			
+			#post{
+				
+				margin-left: 400px;
+				cursor: pointer;
+				font-size: 16px;	
+				padding: 10px 14px;
+				border: none;
+				outline: none;
+				border-radius: 6px;
+				outline: none;
+				color: #00cc66;
+				background: #fff;
+				transform: scale(.7);
+				-webkit-transition: all .5s cubic-bezier(0,1,.3,1);
+				transition: all .5s cubic-bezier(0,1,.3,1);
+				
+			}
+			
+			
+			
+			#post:hover{
+				
+				transform: scale(1);
+				background: #00e673;
+				color:#fff;
+				
+			}
+
+			#linkBox{
+				display: none;
+				position: absolute;
+				top: 60px;
+				left: 30%;
+				width: 550px;
+				height: auto;
+				border: 1px solid #00cc66;
+				padding: 10px 18px;
+				border-radius: 8px;
+				z-index: 100;
+				background: #fff;
+			}
+
+			#linkBox div p{
+
+				margin-bottom: 6px;
+				margin-top: 10px;
+				font-family: trebuchet ms;
+				font-weight: normal;
+				font-size: 16px;
+
+			}
+
+			#linkBox div p:first-of-type{
+
+				margin-top: 20px;
+
+			}
+
+			#linkBox div p:last-of-type{
+
+				margin-top: 20px;
+
+			}
+
+			#linkBox div input{
+
+				height: 40px;
+				width: 80%;
+				padding: 5px 8px;
+				border: 1px solid #00cc66;
+				outline: none;
+				border-radius: 6px;
+
+			}
+
+			#linkBox button{
+
+				height: 40px;
+				width: 10%;
+				padding: 6px 4px;
+				border: 1px solid #00cc66;
+				outline: none;
+				border-radius: 6px;
+				background: #fff;
+				color: #000;
+				margin-right: 50px;
+				transition: color .4s, background .6s;
+
+			}
+
+			#linkBox button#ok:hover{
+
+				background: #00cc66;
+				color: white;
+
+			}
+
+			#linkBox button#cancel{
+
+				border: 1px solid #ee0a0a;
+
+
+			}
+
+			#linkBox button#cancel:hover{
+
+				background: #ee0a0a;
+				color: white;
+
+
+			}
+
+			div#note_header{
+
+				width: 90%;
+				margin-top: 15px;
+				margin-left: 30px;
+
+			}
+
+			div#note_header input{
+
+				height: 50px;
+				width: 100%;
+				padding: 5px 8px;
+				border: 1px solid #00cc66;
+				outline: none;
+				border-radius: 6px;
+				font-size: 20px;
+
+			}
+			
+			
+		</style>
+	</head>
+	<body onload="textfield.document.designMode='On';document.querySelector('#note_header input').focus();">
+
+		<form id="linkBox">
+
+			<div>
+
+				<p>Enter the text for your url e.g. Google for "www.google.com"</p>
+
+				<input type="text" name="urlText" placeholder="Enter your url text"/>
+
+			</div>
+
+			<div>
+
+				<p>Enter your url e.g. www.google.com (it should match your url text)</p>
+				<input type="url" name="dUrl" placeholder="Enter your url e.g https://www.google.com"/>
+
+			</div>
+			<br/>
+			<p>
+				<button type="submit" id="ok">OK</button>
+				<button type="button" id="cancel">Cancel</button>
+
+			</p>
+		</form>
+
+		<div id="notebox">
+			<div id="controllers">
+				<select onchange="execCmdWithArgs('fontName', this.value)" name="font_family" style="height:30px;width:100px;font-size:16px;">
+					
+					<option value="serif">serif</option>
+					<option value="Times New Roman">Times New Roman</option>
+					<option value="Trebuchet ms">Trebuchet ms</option>
+					<option value="sans-serif" selected>sans-serif</option>
+					<option value="Comic sans ms">Comic sans ms</option>
+					<option value="monospace">monospace</option>
+					
+				</select>
+				<select onchange="execCmdWithArgs('fontSize', this.value)" name="font_size" style="outline:none;height:30px;width:38px;font-size:16px;box-sizing:none;">
+					
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					
+				</select>
+				<select onchange="execCmdWithArgs('formatBlock', this.value)" name="heading" style="outline:none;height:30px;width:40px;font-size:16px;box-sizing:none;">
+					
+					<option value="H1">h1</option>
+					<option value="H2">h2</option>
+					<option value="H3">h3</option>
+					<option value="H4">h4</option>
+					<option value="H5">h5</option>
+					<option value="H6">h6</option>
+					
+				</select>
+				<button onclick="execCmd('bold')"><img src="{% static 'quick_note/images/icons/bold_icon.png' %}"></button>
+				<button onclick="execCmd('underline')"><img src="{% static 'quick_note/images/icons/u_icon.png' %}"></button>
+				<button onclick="execCmd('italic')"><img src="{% static 'quick_note/images/icons/italic_icon1.png' %}"></button>
+				<button onclick="execCmd('strikeThrough')"><img src="{% static 'quick_note/images/icons/strikethrough_icon.png' %}"></button>
+				<button onclick="execCmd('bold')"><img src="{% static 'quick_note/images/icons/inverted_comma1.png' %}"><img src="{% static 'quick_note/images/icons/inverted_comma2.png' %}"></button>
+				<button onclick="execCmd('justifyLeft')"><img src="{% static 'quick_note/images/icons/align_left_icon.png' %}"></button>
+				<button onclick="execCmd('justifyCenter')"><img src="{% static 'quick_note/images/icons/align_center_icon.png' %}"></button>
+				<button onclick="execCmd('justifyRight')"><img src="{% static 'quick_note/images/icons/align_right_icon.png' %}"></button>
+				<button onclick="execCmd('justifyFull')"><img src="{% static 'quick_note/images/icons/justify_icon.png' %}"></button>
+				<button onclick="execCmd('subscript')"><img src="{% static 'quick_note/images/icons/subscript_icon.png' %}"></button>
+				<button onclick="execCmd('superscript')"><img src="{% static 'quick_note/images/icons/superscript_icon.png' %}"></button>
+				<button onclick="execCmd('undo')"><img src="{% static 'quick_note/images/icons/undo_icon.png' %}"></button>
+				<button onclick="execCmd('redo')"><img src="{% static 'quick_note/images/icons/redo_icon.png' %}"></button>
+				<button onclick="execCmd('insertOrderedList')"><img src="{% static 'quick_note/images/icons/ordered_list_icon.png' %}"></button>
+				<button onclick="execCmd('insertUnorderedList')"><img src="{% static 'quick_note/images/icons/unordered_list_icon.png' %}"></button>
+<!--				<button onclick="execCmdWithArgs('createLink', prompt('Enter the url:', ''))"><img src="{% static 'quick_note/images/icons/link_icon.png' %}"></button>-->
+				<button onclick="openLinkBox()"><img src="{% static 'quick_note/images/icons/link_icon.png' %}"></button>
+				<button onclick="execCmdWithArgs('insertImage', prompt('Enter the image path or url:', ''))"><img src="{% static 'quick_note/images/icons/img_icon2.png' %}"></button>
+				<button onclick="toggleEdit()" style="font-family: 20px;padding: 6px 8px;">Toggle Edit</button>
+				<button onclick="toggleSource()"><img src="{% static 'quick_note/images/icons/html_code_icon.png' %}"></button>
+				<button onclick="execCmd('delete')"><img src="{% static 'quick_note/images/icons/delete_icon.png' %}"></button>
+				<span>
+					Text-color: <input type="color" onchange="execCmdWithArgs('foreColor', this.value)">
+					Background-color: <input type="color" onchange="execCmdWithArgs('backColor', this.value)">
+				</span>
+				<a href="{% url 'quick_note:mynotes'  %}">Go to dashboard</a>
+				<button id="post">Save</button>
+			</div>
+
+			<div id="note_header">
+
+				{% if isInEditMode == True %}
+
+					<input type="text" name="note_header" placeholder="Enter the title of your note" value="{{ header }}">
+					<div style="display: none;" id="noteContentToEdit">{{ content }}</div>
+					<div style="display: none;" id="noteId">{{ noteId }}</div>
+
+				{% else %}
+
+					<input type="text" name="note_header" placeholder="Enter the title of your note">
+
+				{% endif %}
+
+			</div>
+
+
+
+			<iframe name="textfield"></iframe>
+
+
+			
+		</div>
+
+		<div id="modal">
+				<div id="modal-content">
+					<span id="closeBtn">&times;</span>
+                    <h3></h3>
+
+					<div id="navBtns">
+
+						<a href="{% url 'quick_note:mynotes'  %}">Go to dashboard</a>
+						<a href="" id="newNoteLink">View Created note</a>
+
+					</div>
+				</div>
+		</div>
+
+
+
+		<script>console.log('hello there inline')</script>
+		<script>
+
+			//newNoteLink
+			let newNoteLink = document.getElementById('newNoteLink');
+			console.log(newNoteLink);
+
+			//newNoteLink.addEventListener('click', function(){
+				//console.log('You just clicked a button');
+			//	window.location.pathname = '/myotens/' + parseInt(serverResponse.noteId) + '/';
+
+			//});
+
+			// modal
+			let SignUpMsgBox = document.querySelector('#modal #modal-content h3');
+
+			document.getElementById('closeBtn').addEventListener('click', closeModal);
+
+			window.addEventListener('click', outsideClick);
+
+	        function openModal(){
+
+		        document.getElementById('modal').style.display = 'block';
+
+	        }
+
+
+	        function closeModal(){
+		        document.getElementById('modal').style.display = 'none';
+	        }
+
+	        function outsideClick(e){
+		        console.log(e.target);
+		        console.log(e);
+		        if(e.target == modal){
+			        document.getElementById('modal').style.display = 'none';
+		        }
+	        }
+
+
+
+
+			let noteContentToEdit = document.getElementById('noteContentToEdit') || false;
+			let noteId = document.getElementById('noteId') || false;
+
+			if(noteContentToEdit){
+
+				textfield.document.body.innerHTML = noteContentToEdit.innerHTML;
+
+			}
+
+			let urlForm = document.getElementById('linkBox');
+			let okBtn = document.querySelector('#linkBox p button#ok');
+			let cancelBtn = document.querySelector('#linkBox p button#cancel');
+			let inEditMode = true;
+			
+			let showCode = false;
+			let noteContent = textfield.document.querySelector('body');
+			let noteHeader = document.querySelector('#note_header input');
+			let createNote = document.querySelector('#post');
+
+			function openLinkBox(){
+
+				document.getElementById('linkBox').style.display = 'block';
+			}
+
+			function closeLinkBox(){
+
+				document.getElementById('linkBox').style.display = 'none';
+			}
+
+
+			cancelBtn.addEventListener('click', closeLinkBox);
+			
+			function execCmd(command){
+				textfield.document.execCommand(command, false, null);
+			}
+			
+			function execCmdWithArgs(command, arg){
+
+				if(command == 'createLink'){
+
+					linkCreated = textfield.document.execCommand(command, false, arg);
+
+					if(linkCreated == true){
+
+						lastEl = textfield.document.body.lastElementChild;
+						console.log(lastEl);
+
+						if(lastEl.matches('a')){
+
+							lastEl.innerHTML = urlText;
+							lastEl.target = "_blank";
+							console.log(lastEl.innerHTML);
+
+							closeLinkBox();
+
+						}
+
+					}
+
+				}
+				
+				textfield.document.execCommand(command, false, arg);
+				
+			}
+			
+			function toggleSource(){
+				if(showCode){
+					textfield.document.querySelector('body').innerHTML = textfield.document.querySelector('body').textContent;
+					showCode = false;
+					
+				}else{
+					
+					textfield.document.querySelector('body').textContent = textfield.document.querySelector('body').innerHTML;
+					showCode = true;
+					
+				}
+			}
+
+			function toggleEdit(){
+
+				if(inEditMode){
+					console.log(inEditMode);
+					textfield.document.designMode = 'Off';
+					inEditMode = false;
+					console.log(inEditMode);
+				}else{
+					console.log(inEditMode);
+					textfield.document.designMode = 'On';
+					inEditMode = true;
+					console.log(inEditMode);
+				}
+
+			}
+
+			urlForm.addEventListener('submit', function(e){
+
+				e.preventDefault()
+
+				urlText = urlForm.elements.urlText.value;
+				dUrl = urlForm.elements.dUrl.value;
+
+				if(urlText && dUrl && dUrl !== 'https://'){
+
+					urlForm.reset();
+
+					console.log('urlText: ', urlText);
+					console.log('dUrl: ', dUrl);
+
+					execCmdWithArgs('createLink', dUrl);
+
+					/*if(linkCreated == true){
+
+						lastEl = textfield.document.body.lastElementChild;
+						console.log(lastEl);
+
+						if(lastEl.matches('a')){
+
+							lastEl.innerHTML = urlText;
+							console.log(lastEl.innerHTML);
+
+							closeLinkBox();
+
+						}
+
+					}*/
+				}
+
+
+			});
+
+			createNote.addEventListener('click', function(){
+				textfield.document.designMode='Off';
+				//textfield.document.querySelector('body').innerHTML;
+				console.log(noteContent.innerHTML);
+				console.log(noteHeader.value);
+
+
+				if(noteContent.innerHTML && noteHeader.value){
+
+					console.log('noteContent.innerHTML: ', noteContent.innerHTML)
+					noteContent = encodeURIComponent(noteContent.innerHTML);
+					noteHeaderValue = encodeURIComponent(noteHeader.value);
+					console.log('noteContent: ', noteContent)
+
+					let xhttp = new XMLHttpRequest();
+
+						xhttp.onreadystatechange = function(){
+
+							if(this.readyState  == 4 && this.status == 200){
+
+								let serverResponse = JSON.parse(this.responseText);
+
+								if(serverResponse.success){
+
+									console.log('success')
+									console.log(serverResponse.success)
+									SignUpMsgBox.innerHTML = serverResponse.success;
+									textfield.document.body.innerHTML = '';
+									noteHeader.value = '';
+									newNoteLink.href= '/mynotes/' + parseInt(serverResponse.noteId) + '/';
+									openModal();
+
+								}
+
+							}
+
+						}
+
+					xhttp.open("POST", "{% url 'quick_note:addnote' %}", true);
+
+					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+					let params = '';
+
+					if(noteContentToEdit && noteId){
+
+						params = 'editedNote=true&noteId='+noteId.innerText+'&header='+noteHeaderValue+'&noteContent='+noteContent;
+						//params = `editedNote=true&noteId='+noteId.innerText+'&header='+${noteHeader.value+'&noteContent='+${noteContent}`;
+						console.log('PARAMS: ',params);
+
+					}else{
+
+						params = 'header='+noteHeaderValue+'&noteContent='+noteContent;
+						console.log('PARAMS: ',params);
+
+					}
+
+					xhttp.send(params);
+
+
+
+				}
+
+			});
+
+		</script>
+	</body>
+</html>

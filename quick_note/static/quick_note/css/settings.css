@@ -1,0 +1,267 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	
+}
+
+body{
+	position: relative;
+	display:flex;
+}
+
+#div1{
+	position: fixed;
+	height:100vh;
+	width:15%;
+	background:#00cc66;
+	padding: 90px 10px 20px 10px;
+	text-align: center;
+}
+
+#div2{
+	margin-left: 15%;
+	height:100vh;
+	width:85%;
+	background: #fff;
+	padding: 10px 10px 0px 10px;
+}
+
+#div2 #dashboard_header h1{
+	
+	font-family: trebuchet ms;
+	font-weight: lighter;
+	text-transform: uppercase;
+	font-size: 40px;
+	text-align: center;
+	margin-top: 8px;
+	color: #00cc66;
+	
+}
+
+#div2 #dashboard_header h3{
+	
+	font-family: comic sans ms;
+	font-weight: lighter;
+	text-transform: lowercase;
+	font-size: 20px;
+	text-align: center;
+	font-style: italic;
+	margin-top: 10px;
+	color: rgba(0,0,0,.6);
+	
+}
+
+#div2 section#account_details{
+	
+	height: auto;
+	padding-left: 25px;
+	padding-bottom: 10px;
+	
+}
+
+#div2 section#account_details h2, #div2 section#notes_statistics h2{
+	
+	width: 95%;
+	padding: 6px;
+	font-family: verdana;
+	font-weight: lighter;
+	text-transform: capitalize;
+	font-size: 30px;
+	text-align: left;
+	margin-top:20px;
+	margin-left:20px;
+	color: #00cc66;
+	border-bottom: 1px solid rgba(0,0,0,.4);
+	
+}
+
+#div2 section#account_details img#user_pic{
+	
+	width: 12%;
+	height: 12%;
+	border-radius: 50%;
+	transform: translateY(-30px);
+}
+
+#div2 section#account_details p#editUserPicSpan{
+	
+	display: none;
+	width: auto;
+	display: inline-block;
+	cursor: pointer;
+	transform: translateY(-30px);
+}
+
+#div2 section#account_details p#editUserPicSpan img{
+	
+	display: none;
+	cursor: pointer;
+}
+
+
+#div2 section#account_details p#editUserPicSpan input{
+	
+	display: none;
+	
+}
+
+#div2 section#account_details .acctBtns{
+	
+	cursor: pointer;
+	margin-top: 30px;
+	margin-left: 80%;
+	font-size: 16px;	
+	padding: 10px 14px;
+	border: none;
+	border-radius: 6px;
+	outline: none;
+	color: #fff;
+	background: #00cc66;
+	transition: border 0.4s;
+}
+
+#div2 section#account_details .acctBtns:hover{
+	
+	background: #008040;
+	
+}
+
+#div2 section#account_details #btnSave{
+	
+	display: none;
+	margin-top: 40px;
+	margin-left: calc(50% - 60px);
+	
+}
+
+#div2 section#account_details p.userDetails{
+	
+	margin-top: 10px;
+	
+}
+
+#div2 section#account_details div{
+	
+	margin-top: 20px;
+	font-family: trebuchet ms;
+	font-size: 20px;
+	color: #00cc66;
+	
+}
+
+#div2 section#account_details div:first-of-type{
+	
+	margin-top: -20px;
+	
+}
+
+#div2 section#account_details p, #div2 section#account_details div{
+	
+	margin-left: 20px;
+	
+}
+
+
+#div2 section#account_details p.userDetails input{
+	
+	width: 30%;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid #00cc66;
+	font-size: 20px;
+	font-family: comic sans ms;
+	text-indent: 8px;
+}
+
+#div2 section#account_details p.userDetails input:first-of-type{
+	
+	margin-right: 20%;
+	
+}
+
+#div2 section#account_details div span{
+	
+	display: inline-block;
+	width: 200px;
+
+}
+
+#div2 section#account_details div span:first-of-type{
+	
+	margin-right: 33%;
+	
+}
+
+#div2 section#notes_statistics div#notesStatisticsContainer{
+	
+	height: 200px;
+	padding-top: 30px;
+	
+}
+
+#div2 section#notes_statistics div#notesStatisticsContainer > div{
+	
+	
+	width: 30%;
+	height: 150px;
+	display: inline-block;
+	padding-left: 40px;
+	text-align: center;
+	
+}
+
+#div2 section#notes_statistics div#notesStatisticsContainer > div:nth-of-type(2){
+	
+	border-right: 2px dashed #00cc66;
+	border-left: 2px dashed #00cc66;
+	
+}
+
+#div2 section#notes_statistics div#notesStatisticsContainer > div:nth-of-type(2) p{
+	
+	margin-left: -50px;
+	
+}
+
+#div2 section#notes_statistics div#notesStatisticsContainer > div p:first-of-type{
+	
+	font-family: trebuchet ms;
+	font-weight: lighter;
+	font-size: 30px;
+	margin-bottom: 20px;
+	margin-top: 30px;
+	
+}
+
+#div2 section#notes_statistics div#notesStatisticsContainer > div p:last-of-type{
+	
+	font-family: comic sans ms;
+	font-size: 30px;
+	color: #00cc66;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

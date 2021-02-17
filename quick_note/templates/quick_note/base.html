@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block Title %}Quick Notes...{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'quick_note/css/base.css' %}"/>
+		{% block Styles %}{% endblock %}
+    </head>
+    <body>
+
+        <aside id="div1">
+
+				<a href="#" id="logo" title="welcome to quick notes">
+						Quick notes<sub style="font-size: 10px;font-style:italic;">....Save your notes here</sub>
+				</a>
+
+				<div id="user_details">
+
+					<div>
+						<img src="{% static 'quick_note/images/oluwaseyi4.png' %}">
+						<h3>{{ request.user.username }}</h3>
+					</div>
+				</div>
+
+				<ul>
+
+					<li><a href="{% url 'quick_note:addnote' %}">Add note</a></li>
+					{% block activelink1 %}<li><a href="{% url 'quick_note:mynotes' %}">My notes</a></li>{% endblock %}
+					{% block activelink2 %}<li><a href="{% url 'quick_note:sharednotes' %}">Shared notes</a></li>{% endblock %}
+					{% block activelink3 %}<li><a href="{% url 'quick_note:privatenotes' %}">Private notes</a></li>{% endblock %}
+					{% block activelink4 %}<li><a href="{% url 'quick_note:taskmanager' %}">Task manager</a></li>{% endblock %}
+					{% block activelink5 %}<li><a href="{% url 'quick_note:settings' %}">Settings</a></li>{% endblock %}
+					<li><a href="{% url 'quick_note:logout' %}">logout</a></li>
+
+				</ul>
+			</aside>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

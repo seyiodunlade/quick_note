@@ -1,0 +1,72 @@
+
+#openBtn{
+	padding: 8px 10px;
+	background-color: coral;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	color: white;
+	font-family: Arial;
+	font-size: 17px;
+}
+
+#openBtn:hover{
+	border: 2px solid coral;
+	background-color: white;
+	color:coral;
+}
+@keyframes showAnimate{
+	from{opacity:0;}
+	to{opacity:1;}
+}
+
+#modal, #share_modal, #delete_modal{
+	display: block;
+	position:fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	background-color: rgba(3,3,3,0.5);
+	animation-name: showAnimate;
+}
+
+#modal-content, #delete_modal-content, #share_modal-content{
+	background-color: #00cc66;
+	margin: 200px auto;
+	box-sizing: border-box;
+	box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 40%;
+	padding: 10px 20px;
+	border-radius: 5px 0 5px 0;
+	color: #fff;
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	line-height: 15px;
+	height: 40%;
+}
+
+#modal-content h3, #delete_modal-content h2, #share_modal-content h2{
+
+    color: #fff;
+    font-size: 18px;
+    font-family: comic sans ms, sans-serif;
+    font-weight: normal;
+    margin-top: 70px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 30px;
+
+}
+
+#closeBtn, .closeBtn{
+	float: right;
+	font-size: 30px;
+}
+#closeBtn:hover,.closeBtn:hover{
+	color: #555;
+	cursor:pointer;
+	transition: color 0.4s;
+}

@@ -1,0 +1,249 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+header{
+	height: 550px;
+	background-image: url('../images/img2.jpg');
+	background-attachment:fixed;
+	background-position: 100% 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+header .header-bg{
+	height: 100%;
+	border: 1px solid black;
+	background: rgba(0, 0, 0, .5);
+	
+}
+
+
+nav{
+	background-color: #26DD7A;
+	background: #00cc66; !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+	height: 46px;
+    overflow: hidden;
+	display: block;
+	font-family: comic sans ms;
+	z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+nav ul.float-right{
+	float: right;
+	margin-right: 40px;
+}
+
+nav ul.float-left{
+	float: left;
+}
+
+nav ul li{
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+	font-size: 16px;
+    text-decoration: none;
+	transition: background-color 0.8s; 
+	
+}
+
+nav ul li a:hover:not(.active) {
+    background-color: #158449;
+}
+
+nav ul li a.active {
+    background-color: rgba(0,0,0,0.7);
+}
+
+
+header div#header-text{
+	border: 1px solid green;
+	width: 60%;
+	margin: 250px auto;
+	text-align: center;
+	color: white;
+	font-family: comic sans ms; 
+}
+
+header div#header-text h1{
+	margin-bottom: 20px;
+	font-size: 52px;
+	font-weight: 400;
+}
+
+header div#header-text h3{
+	letter-spacing: 2px;
+	font-family: trebuchet ms;
+	font-family: 100;
+}
+
+#points-section{
+	height: 650px;
+	background: rgb(0,232,0);
+	background: #00cc66; !important;
+	border: 2px solid red;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding-top: 60px;
+}
+
+
+
+#points-section .point{
+	font-family: sans-serif;
+	position: relative;
+	padding: 20px;
+	height: 500px;
+	width: 30%;
+	border: 1px solid black;
+	text-align: center;
+	background: #ffffff;
+	border-radius: 8px;
+	box-shadow: 10px 10px 6px 6px rgba(0,0,0, 0.6);
+}
+
+#points-section .point img{
+	height: 60%;
+	border-radius: 6px;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+#points-section .point p{
+	margin-bottom: 20px;
+}
+
+#benefits-section{
+	
+	height: 620px;
+	border: 2px solid blue;
+	background: #FFFFFF;
+	
+}
+
+#benefit-carousel{
+	
+	height: 500px;
+	width: 70%;
+	margin: 60px auto;
+	border: 2px solid blue;
+	background: #26DD7A;
+	
+}
+
+#testimonial-section{
+	position: relative;
+	height: 660px;
+	background: url('../images/justin-geo-walsiyen-KKbP7QcE2WU-unsplash.jpg');
+	background-attachment:fixed;
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+	
+}
+
+#testimonial-section #testimonial-section-bg{
+	height: 100%;
+	border: 1px solid black;
+	background: rgba(0, 0, 0, .5);
+	text-align: center;
+}
+
+#testimonial-section #testimonial-header{
+	margin: 30px;
+	text-align: center;
+	font-weight: 500;
+	
+}
+
+#testimonial-section #testimonial-header img{
+	border-radius: 50%;
+	margin: 20px auto;
+	
+}
+
+#testimonial-section #testimonial-body{
+	width: 40%;
+	height: 250px;
+	padding: 10px;
+	margin: 0 auto;
+	font-size: 20px;
+	line-height: 30px;
+	
+	
+}
+
+#testimonial-section #testimonial-footer{
+	width: 50%;
+	margin: 30px auto;
+	font-weight: 400;
+	margin-bottom: 50px;
+}
+
+#testimonial-section a.prev, #testimonial-section a.next{
+	position: absolute;
+	cursor: pointer;
+	left: calc(20% - 80px);
+	top: 50%;
+	color: rgba(128,128,128, 0.7);
+	font-weight: bold;
+	font-size: 40px;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+	transform: scale(.8);
+	transition: 0.6s ease;
+}
+
+#testimonial-section a.next{
+	left: calc(88% - 80px);
+}
+
+#testimonial-container .dot{
+	cursor: pointer;
+	height: 12px;
+	width: 12px;
+	margin: 0 3px;
+	background-color: rgba(128,128,128, 0.7);
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+	transform: scale(.8);
+}
+
+#testimonial-section a.prev:hover, #testimonial-section a.next:hover{
+	color: rgba(128,128,128, 0.6);
+	transform: scale(1.2);
+}
+
+#testimonial-container .dot:not(.active):hover{
+	background-color: rgb(128,128,128);
+}
+
+#testimonial-container .active{
+	background-color: #26DD7A;
+	transform: scale(1);
+}
+
+
+
+
+

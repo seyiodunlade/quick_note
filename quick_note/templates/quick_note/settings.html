@@ -1,0 +1,155 @@
+{% extends "quick_note/base.html" %}
+
+{% load static %}
+	<title>{% block Title %}Settings...{% endblock %}</title>
+
+	{% block Styles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'quick_note/css/settings.css' %}"/>
+	{% endblock %}
+
+	{% block activelink5 %}
+		<li><a class="active" href="{% url 'quick_note:settings' %}">Settings</a></li>
+	{% endblock %}
+
+	{% block content %}
+
+		<section id="div2">
+				
+			<header>
+				<div id="dashboard_header">
+					<h1>Settings</h1>
+						
+					<h3>Personalise your note space...</h3>
+				</div>
+					
+					
+			</header>
+				
+			<section id="account_details">
+				
+				<h2>Account Details</h2>
+				<button class="acctBtns" id="btnEdit">Edit Account Details</button><br/>
+				<img src="{% static 'quick_note/images/oluwaseyi4.png' %}" id="user_pic" alt="user's picture">
+				<p id="editUserPicSpan"><label for="editUserPic"><img src="{% static 'quick_note/images/icons/edit.png' %}" alt="Edit User's picture"><input id="editUserPic" type="file"></label></p>
+					
+				<div>
+					
+					<span>Username:</span>
+					<span>Firstname:</span>
+						
+				</div>
+				<p class="userDetails">
+					<input type="text" value="{{request.user.username}}" readonly/>
+					<input id="fname" type="text" value="{{request.user.first_name}}" readonly/>
+				</p>
+					
+				<div>
+					
+					<span>Lastname:</span>
+					<span>E-mail:</span>
+						
+				</div>
+				<p class="userDetails">
+					<input id="lname" type="text" value="{{request.user.last_name}}" readonly/>
+					<input id="email" type="email" value="{{request.user.email}}" readonly/>
+				</p>
+					
+				<div>
+
+					<span>Country:</span>
+						
+				</div>
+				<p class="userDetails">
+					<input id="country" type="list" value="{{request.user.country}}"/>
+				</p>
+
+				<button class="acctBtns" id="btnSave">Save</button>
+			</section>
+
+
+
+			<section id="notes_statistics">
+				
+				<h2>Notes Statistics</h2>
+					
+				<div id="notesStatisticsContainer">
+						
+					<div>
+						<p>Your Notes</p>
+							
+						<p id="notesNum">{{ get_notes_count }}</p>
+					</div>
+						
+					<div>
+						<p>Shared Notes</p>
+							
+						<p id="sharedNotesNum">{{ get_shared_notes_count }}</p>
+					</div>
+						
+					<div>
+						<p>Private Notes</p>
+							
+						<p id="PrivateNotesNum">{{ get_private_notes_count }}</p>
+					</div>
+						
+						
+				</div>
+					
+			</section>
+				
+		</section>
+
+
+		<script>
+
+				let editUserPicSpan = document.querySelector('#editUserPicSpan');
+				let btnEdit = document.querySelector('#btnEdit');
+				let btnSave = document.querySelector('#btnSave');
+				let userDetails = document.querySelectorAll('#div2 section#account_details p.userDetails')
+
+				btnEdit.addEventListener('click', function(){
+
+					editUserPicSpan.style.display = 'initial-block';
+					editUserPicSpan.firstElementChild.firstElementChild.style.display = 'inline';
+					console.log(editUserPicSpan);
+					console.log(editUserPicSpan.firstElementChild.firstElementChild.style);
+					btnEdit.style.visibility = 'hidden';
+					btnSave.style.display = 'block';
+
+					for(let i=0; i < userDetails.length; i++){
+
+						for(let j=0; j < userDetails[i].children.length; j++){
+
+							userDetails[i].children[j].readOnly = false
+
+						}
+
+					}
+
+				});
+
+				btnSave.addEventListener('click', function(){
+
+					editUserPicSpan.style.display = 'none';
+					editUserPicSpan.firstElementChild.firstElementChild.style = 'none';
+					console.log(editUserPicSpan);
+					btnEdit.style.visibility = 'visible';
+					btnSave.style.display = 'none';
+
+					for(let i=0; i < userDetails.length; i++){
+
+						for(let j=0; j < userDetails[i].children.length; j++){
+
+							userDetails[i].children[j].readOnly = true;
+
+						}
+
+					}
+
+
+				});
+
+
+
+			</script>
+	{% endblock %}

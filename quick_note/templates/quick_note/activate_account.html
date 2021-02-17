@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>send Mail</title>
+</head>
+<body>
+
+    {% if messages %}
+
+        {% for message in messages %}
+        <h1>{{ message.level }} ---- {{ message }}</h1>
+
+        {% endfor %}
+    {% endif %}
+
+</body>
+</html>

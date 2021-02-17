@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ note.header }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'quick_note/css/note.css' %}">
+
+
+</head>
+<body>
+
+     <aside id="div1">
+
+				<a href="#" id="logo" title="welcome to quick notes">
+						Quick notes<sub style="font-size: 10px;font-style:italic;">....Save your notes here</sub>
+				</a>
+
+				<div id="user_details">
+
+					<div>
+						<img src="{% static 'quick_note/images/oluwaseyi4.png' %}">
+						<h3>{{ request.user.username }}</h3>
+					</div>
+				</div>
+
+					<a href="" id="editNoteLink">Edit note</a>
+					<a href="" id="noteDetailsLink">Note details</a>
+
+
+                <ul id="header_list">
+
+
+                    <button type="button" id="PreviousLinks">Previous</button>
+                    <button type="button" id="NextLinks">Next</button>
+
+				</ul>
+
+                <ul id="header_list_none" style="display:none">
+
+                    {% for header in header_list %}
+
+                        <li class="header_links"><a href="" id="">{{ header }}</a></li>
+
+                    {% endfor %}
+
+				</ul>
+
+                <div style="margin:0;position: absolute; left:0; bottom: 40px;font-size: 18px;">
+
+					<a style="margin-right: 12px;" href="{% url 'quick_note:mynotes' %}">Back to dashboard</a>
+					<a href="{% url 'quick_note:logout' %}">logout</a>
+
+				</div>
+
+			</aside>
+    <div id="div2">
+        <header>
+
+            <nav>
+
+                <a href="">Edit note</a>
+                <a href="">View note details</a>
+                <a href="{% url 'quick_note:mynotes' %}">Back to dashboard</a>
+                <a href="{% url 'quick_note:logout' %}">logout</a>
+
+            </nav>
+
+            <div id="other_features">
+
+                <a href="#">Download your note</a>
+                {% if not note.is_private %}
+                    <button id="makePrivate" type="button">Make note private</button>
+                {% endif %}
+
+            </div>
+        </header>
+
+        <div id="note_container">
+
+            <div class="edit_note_dashboard">
+                <form id="editForm" style="display: none" method="POST" action="{% url 'quick_note:addnote' %}">
+                    {% csrf_token %}
+
+                    <input type="text" name="header" value="{{ note.header }}">
+                    <input type="text" name="isInEditMode" value="True">
+                    <input type="text" name="noteId" value="{{ note.id }}">
+                    <textarea name="noteContent">{{ note.content }}</textarea>
+
+                </form>
+
+
+            </div>
+
+
+            <div id="note">
+
+                <h1> {{ note.header }} </h1>
+
+                <div> {{ note.content }} </div>
+
+             </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let headerLinksPerPage = 8;
+        let PreviousLinks = document.querySelector('#PreviousLinks');
+        let NextLinks = document.querySelector('#NextLinks');
+        let header_list = document.querySelector('#header_list');
+        let header_list_none = document.querySelector('#header_list_none');
+        let header_list_none_links = document.querySelectorAll('#header_list_none .header_links');
+        let editForm = document.querySelector('#note_container .edit_note_dashboard #editForm');
+        let editBtn = document.querySelector('#note_container .edit_note_dashboard #editBtn');
+        let editNoteLink = document.querySelector('#editNoteLink');
+
+<!--        console.log(header_list_none_links);-->
+        console.log(editForm.elements.header.value);
+        console.log(editForm.elements.isInEditMode.value);
+        console.log(editForm.elements.noteContent.value);
+
+        function controlHeaderLinks(){
+
+            for(let i=headerLinksPerPage;i >= 0; i--){
+                console.log(header_list_none_links[i]);
+                header_list.insertBefore(header_list_none_links[i], header_list.firstElementChild);
+
+            }
+
+        }
+
+        controlHeaderLinks();
+
+        console.log('header_list_none: ', header_list_none);
+        console.log('header_list :', header_list);
+<!--        console.log(header_list_none.length);-->
+
+
+
+<!--        editBtn.addEventListener('click', function(){-->
+
+<!--            editForm.submit();-->
+
+<!--        });-->
+
+        editNoteLink.addEventListener('click', function(e){
+            e.preventDefault()
+            editForm.submit();
+
+        });
+
+
+    </script>
+
+</body>
+</html>

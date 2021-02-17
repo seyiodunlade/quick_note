@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+{% load static %}
+	<html>
+		<head>
+			<title>Quick Notes......</title>
+			<link rel="stylesheet" type="text/css" href="{% static 'quick_note/css/index.css' %}"/>
+		</head>
+		<body>
+			<header>
+				<div class="header-bg">
+					
+					<nav>
+						<ul class="float-left">
+							<li ><a>Quick Notes</a></li>
+						</ul>
+						<ul class="float-right">
+							<li><a class="active">Home</a></li>
+							<li><a>About</a></li>
+							<li><a>Contact-us</a></li>
+							<li><a href="signup">Sign-up</a></li>
+							<li><a>logout</a></li>
+						</ul>
+					</nav>
+					
+					
+						
+					<div id="header-text">
+						<h1>WRITE ON THE GO!!!</h1>
+						<h3>Write and access your notes anywhere, anyplace, anytime</h3>
+					</div>
+					
+				</div>
+				
+				
+			</header>
+			
+			<section id="points-section">
+				
+			
+				<div class="point">
+					<h2>Running out of space?</h2>
+					<img src="images/privacy1.jpeg" />
+					<div>
+						<p>Don’t bother about deleting those precious notes</p>
+						<p>let's keep your notes for you</p>
+					</div>
+				</div>
+				
+				<div class="point">
+					<h2>Having privacy issues?</h2>
+					<img src="images/privacy2.jpeg" />
+					<div>
+						<p>Don’t bother about prying eyes</p>
+						<p>let's keep your notes safe</p>
+					</div>
+				</div>
+				
+				<div class="point">
+					<h2>Want to share your ideas?</h2>
+					<img src="images/share_ideas.jpg" />
+					<div>
+						<p>Don’t worry about how to share those wonderful ideas</p>
+						<p>let’s make your notes public with just a link</p>
+					</div>
+				</div>
+				
+			</section>
+			
+			<section id="benefits-section">
+				
+				<div id="benefit-carousel">
+				
+				</div>
+				
+			</section>
+			
+			<section id="testimonial-section">
+				<div id="testimonial-section-bg">
+					
+					<div id="testimonial-container">
+					
+						<div id="testimonial-header">
+							<img src="{% static 'quick_note/images/oluwaseyi4.png' %}">
+							<p>Odunlade Oluwaseyi</p>
+						</div>
+						<!-- Add a horizontal line here  -->
+						<div id="testimonial-body">
+							I never had seen Seinfeld, and they said, ‘Oh, it’s the last episode.’ And I said, ‘Oh, I’ll watch Seinfeld.’ And it was terrible.
+							I never had seen Seinfeld, and they said, ‘Oh, it’s the last episode.’ And I said, ‘Oh, I’ll watch Seinfeld.’ And it was terrible.
+							I never had seen Seinfeld, and they said, ‘Oh, it’s the last episode.’ And I said, ‘Oh, I’ll watch Seinfeld.’ And it was terrible.
+							I never had seen Seinfeld, and they said, ‘Oh, it’s the last episode.’ And I said, ‘Oh, I’ll watch Seinfeld.’ And it was terrible.
+						</div>
+						<!-- Add a horizontal line here  -->
+						<div id="testimonial-footer">
+							<p><i>Lagos,Nigeria</i></p>
+						</div>
+						
+						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+						<a class="next" onclick="plusSlides(1)">&#10095;</a>
+						
+						<div style="text-align:center">
+						  <span class="dot" onclick="currentSlide(1)"></span> 
+						  <span class="dot active" onclick="currentSlide(2)"></span> 
+						  <span class="dot" onclick="currentSlide(3)"></span> 
+						</div>
+					
+					</div>
+					
+				</div>
+			</section>
+			
+			<footer style="height: 300px;border:2px solid green">
+			
+			</footer>
+
+		<script>console.log('hello there inline')</script>
+		<script src="{% static 'quick_note/js/hello.js' %}" type="text/javascript"></script>
+		</body>
+	</html>

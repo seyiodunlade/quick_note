@@ -1,0 +1,11 @@
+@media (max-width:320px){
+	.notes-container{
+		margin: 0;
+		height: 1000px;
+		width: 98%;
+		/*border: 1px solid black;*/
+		background: ;
+		padding: 50px 10px;
+		padding-left: 16px;
+	}
+}

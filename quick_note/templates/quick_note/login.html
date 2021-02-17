@@ -1,0 +1,276 @@
+{% load static %}
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<!--<link rel="stylesheet" type="text/css" href="main.css"/>-->
+			<link rel="stylesheet" type="text/css" href=" {% static 'quick_note/css/modalStyle.css' %}"/>
+			<title>Log into your Account</title>
+			<style>
+				*{
+					margin: 0;
+					padding: 0;
+					box-sizing: border-box;
+				}
+			
+				body{
+					background: #00cc66;
+				}
+				.container{
+					width: 40%;
+					height: 450px;
+					margin: 150px auto;
+				}
+				
+				#user-details{
+					border:none;
+					border-radius: 12px 12px 0 0;
+					text-align:center;
+					background: rgb(23, 227, 0);
+					height: 25%;
+					text-align:center;
+					padding-top: 30px;
+				}
+				
+				#user-details #login{
+					margin: auto;
+					padding: 6px 12px;
+					width:50%;
+					font-size: 30px;
+					color: white;
+					font-family: arial;
+					border: 2px solid #fff;
+				}
+				.form-container{
+					height: auto;
+					background-color:white;
+					border:none;
+					border-radius: 0 0 12px 12px;
+				}
+				
+				
+				.form-container #myform{
+					padding: 10px;
+				}
+				.form-container #myform input{
+					font-size: 20px;
+					display: block;
+					width: 90%;
+					padding: 5px 10px;
+					margin-top: 15px;
+					margin-bottom: 20px;
+					border:none;
+					border-bottom: 2px solid rgb(23, 190, 0);
+					color: rgb(23, 227, 0);
+					transition: border-bottom 0.4s;
+				}
+
+				.form-container #myform input[name="password"]{
+
+					width: 90%;
+					display: inline-block;
+
+				}
+				
+				.form-container #myform input:focus{
+					outline: none;
+					border:none;
+					border-bottom: 2px solid rgb(23, 92, 0);
+				}
+				.form-container #myform input::placeholder{
+					color: rgba(0,0,0,0.5);
+					font-size: 20px;
+					font-family: "comic sans ms", serif;
+				}
+				
+				.form-container #myform label{
+					text-align: left;
+					font-family: sans-serif;
+					color: rgba(0,0,0,0.6);
+				}
+				
+				
+				.form-container #myform button{
+					margin: auto;
+					margin-top: 10px;
+					background: #00cc66;
+					border: none;
+					outline: none;
+					border-radius: 6px;
+					color: white;
+					padding: 10px 32px;
+					text-align: center;
+					text-decoration: none;
+					display: block;
+					cursor: pointer;
+					font-size: 20px;
+					font-family: "comic sans ms", sans-serif;
+					transform: scale(0.8);
+					transition: background 0.4s, transform 0.7s;
+				}
+				
+				.form-container #myform button:hover{
+					background: rgb(23, 227, 0);
+					transform: scale(1.2);
+				}
+
+				a #forgot_password{
+
+					text-decoration: underline;
+					color: rgba(0,0,0,0.7);
+
+				}
+
+				a:hover #forgot_password{
+
+					text-decoration: underline;
+					color: #00cc66;
+
+				}
+
+				#passwordIcons{
+
+					position: relative;
+
+				}
+
+				#passwordIcons img{
+
+					{*position: absolute;*}
+					left: 20px;
+					top: -2px;
+					cursor: pointer;
+
+				}
+
+				#forgotPasswordIcon{
+
+					position: relative
+
+				}
+
+				#forgotPasswordIcon img{
+
+					position: absolute;
+					left: 10px;
+					top: -2px;
+
+				}
+
+				#closeBtn:hover,#closeBtn:hover{
+					color: #000;
+					cursor:pointer;
+					transition: color 0.4s;
+				}
+
+
+				#error_msgs{
+
+					width: 100%;
+					height: 60px;
+					background-color: #bd0000;
+					border: 1px solid red;
+					text-align: center;
+					padding-top: 15px;
+					box-sizing: border-box;
+
+
+				}
+
+				#error_msgs p{
+
+					color: #fff;
+					font-family: trebuchet ms;
+					font-size: 18px;
+
+				}
+
+/*				#myform .is_invalid:first-of-type{
+
+					margin-top: -15px;
+
+				}
+*/
+			</style>
+		</head>
+		
+		<body>
+			<div class="container">
+				<div id="user-details">
+					
+					<div id="login">LOGIN</div>
+					
+				</div>
+				<div class="form-container">
+
+
+					{% if messages %}
+						<div id="error_msgs">
+							{% for message in messages %}
+	
+								<p>{{ message }}</p>
+
+							{% endfor %}
+						</div>
+					{% endif %}
+
+					<form action="{% url 'quick_note:login' %}" id="myform" method="post">
+						{% csrf_token %}
+						<input type="email" name="user_email" placeholder= "Username Or Email Address..." maxlength="60">
+						<input type="password" name="password" placeholder="Password..."/>
+						<span id="passwordIcons">
+							<img id="viewPassword" src="{% static 'quick_note/images/icons/view2.png' %}"/>
+							<img id="hidePassword" src="{% static 'quick_note/images/icons/private1.png' %}"/>
+						</span><br/>
+						<a href="{% url 'quick_note:forgot_password' %}" style="margin-top: 10px; font-family:trebuchet ms; font-weight: 400;color: rgba(0,0,0, 0.7);text-decoration:none;"><span id="forgot_password">forgot password?</span><span id="forgotPasswordIcon"><img src="{% static 'quick_note/images/icons/forgot1.png' %}"/></span></a>
+						<button type="submit" name="login">LOGIN</button>
+					</form>
+				</div>
+			</div>
+
+<!--			 <div id="modal" style="display: none;">-->
+<!--				<div id="modal-content" style="background-color: #af0606; border-radius: 6px;">-->
+<!--					<span id="closeBtn">&times;</span>-->
+<!--                    <h3 style="margin-top: 120px;margin-left: 4%;">There was an error trying to log you in, please try again!!!</h3>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<script src="{% static 'quick_note/js/mainModal.js' %}"></script>-->
+				<script>
+
+					// Form fields
+					let loginForm = document.getElementById("myform");
+					let user_emailField = loginForm.elements.user_email;
+					let passwordField = loginForm.elements.password;
+					let hidePassword = document.getElementById('hidePassword');
+					let viewPassword = document.getElementById('viewPassword');
+					hidePassword.style.display = 'none';
+
+
+					let passwordIcons = document.querySelectorAll('#passwordIcons img');
+					passwordIcons.forEach(function(passwordIcon){
+
+					passwordIcon.addEventListener('click', function(event){
+
+						console.log(event.target.id);
+						if(event.target === passwordIcon && event.target === viewPassword && event.target.id === 'viewPassword'){
+
+							passwordField.type = "text";
+							viewPassword.style.display = 'none';
+							hidePassword.style.display = 'inline';
+
+						}else{
+
+							passwordField.type = "password";
+							hidePassword.style.display = 'none';
+							viewPassword.style.display = 'inline';
+
+						}
+
+					});
+
+				});
+
+				</script>
+		</body>
+	</html>

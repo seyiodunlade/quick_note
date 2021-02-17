@@ -1,0 +1,228 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+
+}
+
+a, button{
+
+    cursor: pointer;
+
+}
+
+body{
+	position: relative;
+
+}
+
+#div1{
+	position: fixed;
+	height:100vh;
+	width:15%;
+	background:#00cc66;
+	padding: 90px 10px 20px 10px;
+	text-align: center;
+}
+
+#div1 #logo{
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: trebuchet ms;
+
+}
+
+#user_details{
+	border: 3px solid #fff;
+	padding: 10px 20px;
+	border-radius: 8px;
+	text-align: left;
+	cursor: pointer;
+	margin-bottom: 60px;
+}
+
+#user_details img{
+
+	width: 23%;
+	height: 23%;
+	border-radius: 50%;
+	position: relative;
+
+}
+
+#user_details h3{
+	display: inline;
+	color: #fff;
+	font-family: trebuchet ms;
+	font-size: 20px;
+	position: relative;
+	top: -12px;
+	left: 2px;
+}
+
+#div1 ul{
+
+	list-style-type: none;
+	margin-top: 20px;
+
+}
+
+#div1 ul li{
+
+	display: block;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 6px;
+}
+
+#div1 ul li:last-of-type{
+
+	margin-bottom: 10px;
+
+}
+
+#div1 ul li a{
+
+	text-decoration: none;
+	cursor: pointer;
+	font-family: "comic sans ms", san serif;
+	font-size: 20px;
+	color: #ddd;
+	transition: color .4s, font-size .6s;
+}
+
+#div1 ul li a.active, #div1 ul li a.active:hover{
+
+    color: rgb(250,250,250);
+	font-size: 26px;
+
+}
+
+#div1 ul li a:hover:not(.active){
+
+	color: rgba(250,250,250, .7);
+	font-size: 24px;
+}
+
+#div1 #header_list{
+    height: 500px;
+    border: 1px solid red;
+
+}
+
+#div2{
+
+    border: 1px solid #000;
+    margin-left: 15%;
+	height:100vh;
+	width:85%;
+	background: #fff;
+
+}
+
+#div2 header{
+
+    width: 100%;
+    height: 100px;
+    border: 1px solid red;
+
+}
+
+#div2 header nav{
+
+    width: 100%;
+    height: 30px;
+    border: 1px solid red;
+    background-color: #00cc66;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 30px 20px;
+    box-sizing: border-box;
+
+}
+
+#div2 header nav a{
+
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(240,240,240);
+    margin-right: 16px;
+    font-size: 16px;
+    font-family: sans-serif;
+    transition: color .6s;
+
+
+}
+
+#div2 header nav a:hover{
+
+    color: #fff;
+
+}
+
+#div2 header nav a:last-of-type{
+
+
+}
+
+#div2 header #other_features{
+
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 10px;
+
+}
+
+#div2 #note_container{
+
+    height:auto;
+
+}
+
+#div2 #note_container #note{
+
+    height: 86vh;
+    border: 1px solid red;
+
+}
+/*
+#note{
+
+    margin-bottom: 30px;
+
+}
+
+.edit_note_dashboard{
+
+}
+
+.edit_note_dashboard button{
+
+    background: #00cc66;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    padding: 6px 8px;
+    border-radius: 3px;
+    color: #fff;
+
+}
+
+#note_container{
+
+    position: relative;
+    height: auto;
+    border: 1px solid red;
+    overflow-y: scroll;
+    padding: 20px 10px;
+
+}
+
+*/
